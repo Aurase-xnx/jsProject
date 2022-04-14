@@ -21,16 +21,32 @@
       </div>
     </div>
     <div class="footer">
-      <a href="#GoDown"><img id="down" src="custom/img/arrow.png" alt="down"></a>
-      <a href="#GoUp"><img id="up" src="custom/img/arrow.png" alt="up"></a>
+      <a id="GoDown" href="#GoDown"><img id="down" src="custom/img/arrow.png" alt="down"></a>
+      <a id="GoUp" href="#GoUp"><img id="up" src="custom/img/arrow.png" alt="up"></a>
     </div>
   </body>
   <script src="custom/jquery/jquery-3.6.0.min.js"></script>
 
   <script>
-    $(document).ready(function({
-      console.log("Document is ready")
-    }));
+    $(document).ready(function(){
+      console.log("Document is ready");
+
+      var visitorPosition = 0;
+      $("#GoDown").click(function(){
+        console.log("Down has been clicked");
+        visitorPosition++;
+        console.log(visitorPosition);
+        $("#down").animate({
+          left:"-=50"
+        }, 500, function(){
+        });
+        $("#up").animate({
+          left:"+=50"
+        }, 500, function(){
+        });
+        $("#up").css('rotate', '180');
+      });
+    })
 
   </script>
 </html>
