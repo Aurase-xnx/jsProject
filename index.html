@@ -35,7 +35,18 @@
       $("#GoDown").click(function(){
         console.log("Down has been clicked");
         visitorPosition++;
+        $("#GoUp").click(function() {
+          visitorPosition--;
+          console.log(visitorPosition);
+        });
         console.log(visitorPosition);
+      });
+      if (visitorPosition<0) {
+        visitorPosition = 0;
+      }
+
+
+      if (visitorPosition==1) {
         $("#down").animate({
           left:"-=50"
         }, 500, function(){
@@ -45,8 +56,9 @@
         }, 500, function(){
         });
         $("#up").css('rotate', '180');
-      });
-    })
-
+      }
+    });
+      /*
+    })*/
   </script>
 </html>
