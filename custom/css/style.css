@@ -1,1 +1,33 @@
+/*ImportS*/
+
 @import url('https://fonts.googleapis.com/css2?family=Castoro&family=Monoton&display=swap');
+
+/*Variables*/
+:root{
+  --header-height: 3rem;
+
+  --title-color : #0b0a0a;
+  --text-color : #403a3a;
+  --text-color-light : #707070;
+  --container-color : #fafafa;
+  --container-color-light : #f0efef;
+  --body-color : #fcfcfc;
+
+  /*Fonts and Typo*/
+  --body-font : 'Castoro', sans-serif;
+  --h1-font-size : 1.5rem;
+  --h2-font-size : 1.25rem;
+  --h3-font-size : 1rem;
+  --normal-font-size : .95rem;
+  --small-font-size : .90rem;
+  --smaller-font-size : .80rem;
+
+  /*Margenes*/
+  --mb-1 : .5rem;
+  --mb-2 : 1rem;
+  --mb-3 : 1.5rem;
+
+  /*Z-Index*/
+  --z-tooltip : 10;
+  --z-fixed : 100;
+}
