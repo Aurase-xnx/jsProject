@@ -2,63 +2,9 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Dilhan Eser</title>
-    <link rel="stylesheet" href="custom/css/style.css">
+    <title></title>
   </head>
-
   <body>
-    <div class="blocks" id="firstElement">
-      <img src="custom/img/avatar.jpg" alt="Avatar">
-      <div class="who">
-        <p>Eser Dilhan</p>
-        <p>23 years old</p>
-        <p>Half stack dev</p>
-      </div>
-    </div>
-    <div class="blocks" id="secondElement">
-      <div class="prout">
-        <p>2Eme partie lol</p>
-      </div>
-    </div>
-    <div class="footer">
-      <a id="GoDown" href="#GoDown"><img id="down" src="custom/img/arrow.png" alt="down"></a>
-      <a id="GoUp" href="#GoUp"><img id="up" src="custom/img/arrow.png" alt="up"></a>
-    </div>
+
   </body>
-  <script src="custom/jquery/jquery-3.6.0.min.js"></script>
-
-  <script>
-    $(document).ready(function(){
-      console.log("Document is ready");
-
-      var visitorPosition = 0;
-      $("#GoDown").click(function(){
-        console.log("Down has been clicked");
-        visitorPosition++;
-        $("#GoUp").click(function() {
-          visitorPosition--;
-          console.log(visitorPosition);
-        });
-        console.log(visitorPosition);
-      });
-      if (visitorPosition<0) {
-        visitorPosition = 0;
-      }
-
-
-      if (visitorPosition==1) {
-        $("#down").animate({
-          left:"-=50"
-        }, 500, function(){
-        });
-        $("#up").animate({
-          left:"+=50"
-        }, 500, function(){
-        });
-        $("#up").css('rotate', '180');
-      }
-    });
-      /*
-    })*/
-  </script>
 </html>
