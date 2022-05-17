@@ -52,7 +52,7 @@
           </ul>
         </div>
 
-        <div class="nav__toggle" id="nav__toggle">
+        <div class="nav__toggle" id="nav-toggle">
           <i class='bx bx-menu' ></i>
         </div>
       </nav>
@@ -62,35 +62,52 @@
         <!-- All elements within this div, is generated in PDF -->
         <div class="resume" id="area-cv">
             <div class="resume__left">
-                <!--========== HOME ==========-->
-                <section class="home" id="home">
-                    
-                    <!-- Theme change button -->
-                    
+              <!--========== HOME ==========-->
+              <section class="home" id="home">
 
-                    <!-- Button to generate and download the pdf. Available for desktop. -->
+                <div class="home" id="home">
+                  <div class="home__container section bd-grid">
+                    <div class="home__data bd-grid">
+                      <img src="custom/img/avatar.jpg" alt="" class="home__img">
 
-                </section>          
-                
+                      <h1 class="home__title">ESER <b>DILHAN</b></h1>
+                      <h3 class="home__occupation">Student</h3>
+                      <div>
+                        <a download="" href="assets/pdf/CV.pdf" class="home__button-movil">Download this resume</a>
+                      </div>
+                    </div>
+                    <div class="home__address bd-grid">
+                      <span class="home__information">
+                        <i class='bx bxs-map-pin' ></i> Mons
+                      </span>
+                      <span class="home__information">
+                        <i class='bx bxs-envelope' ><a href="mailto:eser.dilhan@outlook.com"> eser.dilhan@outlook.com</a></i>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+              </section>
+
                 <!--========== SOCIAL ==========-->
                 <section class="social section">
-                    
+
                 </section>
 
                 <!--========== PROFILE ==========-->
                 <section class="profile section" id="profile">
-                    
+
                 </section>
-                
+
                 <!--========== EDUCATION ==========-->
                 <section class="education section" id="education">
-                    
+
                 </section>
 
 
                 <!--========== SKILLS  ==========-->
                 <section class="skills section" id="skills">
-                    
+
                 </section>
 
             </div>
@@ -98,40 +115,84 @@
             <div class="resume__right">
                 <!--========== EXPERIENCE ==========-->
                 <section class="experience section" id="experience">
-                    
+
                 </section>
 
                 <!--========== CERTIFICATES ==========-->
                 <section class="certificate section" id="certificates">
-                    
+
                 </section>
 
                 <!--========== REFERENCES ==========-->
                 <section class="references section" id="references">
-                    
+
                 </section>
 
                 <!--========== LANGUAGES ==========-->
                 <section class="languages section">
-                    
+
                 </section>
-                
+
                 <!--========== INTERESTS ==========-->
                 <section class="interests section">
-                    
+
                 </section>
             </div>
-        </div>        
+        </div>
     </main>
 
     <!--========== SCROLL TOP ==========-->
-    
+
 
     <!--========== HTML2PDF ==========-->
     <script src="assets/js/html2pdf.bundle.min.js"></script>
 
-    <!--========== MAIN JS ==========-->
+    <!--JS Goes here-->
 
-    <script src="custom/jquery/jquery-3.6.0.min.js"></script>
+    <script>
+    /*Show menu*/
+      const showMenu = (toggleId, navId) =>{
+        const toggle = document.getElementById(toggleId),
+        nav = document.getElementById(navId)
+
+        if(toggle && nav){
+          toggle.addEventListener('click', ()=>{
+            nav.classList.toggle('show-menu'),
+            console.log("lol")
+          })
+        }
+      }
+      showMenu('nav-toggle','nav-menu')
+
+    /*Remove mobile menu after clicking a link*/
+    const navLink = document.querySelectorAll('.nav__link')
+
+    function linkAction(){
+      const navMenu = document.getElementById('nav-menu')
+      navMenu.classList.remove('show-menu')
+    }
+    navLink.forEach(n => n.addEventListener('click', linkAction))
+
+    /*Autoscroll to selected section*/
+    const sections = document.querySelectorAll('section[id]')
+
+    function scrollActive(){
+      const scrollY = window.pageYOffset
+
+      sections.forEach(current =>{
+        const sectionHeight = current.offsetHeight
+        const sectionTop = current.offsetTop - 50;
+        sectionId = current.getAttribute('id')
+
+        if(scrollY > sectionTop && scrollY <= sectionTop + sectionHeight){
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.add('active-link')
+        }else{
+            document.querySelector('.nav__menu a[href*=' + sectionId + ']').classList.remove('active-link')
+        }
+      })
+    }
+window.addEventListener('scroll', scrollActive)
+    </script>
+
   </body>
 </html>
