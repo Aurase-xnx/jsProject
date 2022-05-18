@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Eser Dilhan">
     <title>Dilhan Eser</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="custom/css/style.css">
@@ -40,13 +41,13 @@
               </a>
             </li>
             <li class="nav__item">
-              <a href="#certification" class="nav__link">
+              <a href="#certifications" class="nav__link">
                 <i class='bx bxs-award nav__icon' ></i>Certifications
               </a>
             </li>
             <li class="nav__item">
-              <a href="#references" class="nav__link">
-                <i class='bx bx-link-external nav__icon' ></i>References
+              <a href="#languages" class="nav__link">
+                <i class='bx bx-world nav__icon'></i>Languages
               </a>
             </li>
           </ul>
@@ -73,7 +74,7 @@
                       <h1 class="home__title">ESER <b>DILHAN</b></h1>
                       <h3 class="home__occupation">Student</h3>
                       <div>
-                        <a download="" href="assets/pdf/CV.pdf" class="home__button-movil">Download this resume</a>
+                        <a download="" href="custom/CV/CV.pdf" class="home__button-movil">Download this resume</a>
                       </div>
                     </div>
                     <div class="home__address bd-grid">
@@ -86,7 +87,8 @@
                     </div>
                   </div>
                 </div>
-
+                <i class='bx bxs-low-vision change-theme' title="Theme" id="theme-button" ></i>
+                <i class='bx bxs-download generate-pdf' title="Generate PDF" id="resume-button"></i>
               </section>
 
                 <!--SOCIAL-->
@@ -196,39 +198,67 @@
                 </section>
 
                 <!--========== CERTIFICATES ==========-->
-                <section class="certificate section" id="certificates">
-                  <h2 class="section-title">Certicates</h2>
+                <section class="certificate section" id="certifications">
+                  <h2 class="section-title">Certications</h2>
                   <div class="certificate__container bd-grid">
                     <div class="certificate__content">
-                      <h3 class="certificate__title"></h3>
-                      <!-- 42:44 -->
+                      <h3 class="certificate__title">CESS</h3>
+                      <p class="certificate__description">Certificat d'Etudes Secondaires Supérieures</p>
+                    </div>
+                    <div class="certificate__content">
+                      <h3 class="certificate__title">SPJ</h3>
+                      <p class="certificate__description">Abilitated to take care of kids in a camp</p>
                     </div>
                   </div>
                 </section>
 
-                <!--========== REFERENCES ==========-->
-                <section class="references section" id="references">
-
-                </section>
-
                 <!--========== LANGUAGES ==========-->
                 <section class="languages section">
-
+                  <h2 class="section-title">Languages</h2>
+                  <div class="languages__container">
+                    <ul class="languages__content bd-grid">
+                      <li class="languages__name">
+                        <span class="languages__circle"></span> English
+                      </li>
+                      <li class="languages__name">
+                        <span class="languages__circle"></span> French
+                      </li>
+                      <li class="languages__name">
+                        <span class="languages__circle"></span> Dutch
+                      </li>
+                    </ul>
+                  </div>
                 </section>
 
                 <!--========== INTERESTS ==========-->
                 <section class="interests section">
-
+                  <h2 class="section-title">Interests</h2>
+                  <div class="interests__container bd-grid">
+                    <div class="interests__content">
+                      <i class='bx bxs-music interests__icon' ></i>
+                      <span class="interests__name">Music producing</span>
+                    </div>
+                    <div class="interests__content">
+                      <i class='bx bx-run interests__icon' ></i>
+                      <span class="interests__name">Cycling</span>
+                    </div>
+                    <div class="interests__content">
+                      <i class='bx bxs-plane-take-off interests__icon' ></i>
+                      <span class="interests__name">Traveling</span>
+                    </div>
+                  </div>
                 </section>
             </div>
         </div>
     </main>
 
     <!--========== SCROLL TOP ==========-->
-
+<a href="#" class="scrolltop" id="scroll-top">
+  <i class='bx bxs-chevrons-up scrolltop__icon' ></i>
+</a>
 
     <!--========== HTML2PDF ==========-->
-    <script src="assets/js/html2pdf.bundle.min.js"></script>
+    <script src="custom/jquery/html2pdf.bundle.min.js"></script>
 
     <!--JS Goes here-->
 
@@ -275,6 +305,77 @@
       })
     }
 window.addEventListener('scroll', scrollActive)
+
+    /*Scroll to top of page*/
+    function scrollTop(){
+      const scrollTop = document.getElementById('scroll-top');
+      // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
+      if(this.scrollY >= 560) scrollTop.classList.add('show-scroll'); else scrollTop.classList.remove('show-scroll')
+    }
+    window.addEventListener('scroll', scrollTop)
+
+    /*Dark/Light Mode*/
+    const themeButton = document.getElementById('theme-button')
+    const darkTheme = 'dark-theme'
+    const iconTheme = 'bx-sun'
+
+    // Previously selected topic (if user selected)
+    const selectedTheme = localStorage.getItem('selected-theme')
+    const selectedIcon = localStorage.getItem('selected-icon')
+
+    // We obtain the current theme that the interface has by validating the dark-theme class
+    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun'
+
+    // We validate if the user previously chose a topic
+    if (selectedTheme) {
+  // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+      document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
+      themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
+    }
+
+    // Activate / deactivate the theme manually with the button
+    themeButton.addEventListener('click', () => {
+        // Add or remove the dark / icon theme
+        document.body.classList.toggle(darkTheme)
+        themeButton.classList.toggle(iconTheme)
+        // We save the theme and the current icon that the user chose
+        localStorage.setItem('selected-theme', getCurrentTheme())
+        localStorage.setItem('selected-icon', getCurrentIcon())
+    })
+
+    /*Reduce the size and print A4*/
+    function scaleCv(){
+      document.body.classList.add('scale-cv')
+    }
+    /*Remove the size when the cv downloaded*/
+    function removeScale(){
+      document.body.classList.remove('scale-cv')
+    }
+    /*Generation of PDF*/
+
+
+    let resumeButton = document.getElementById('resume-button')
+
+    var element = document.getElementById('area-cv');
+
+    var opt = {
+      margin:       1,
+      filename:     'CV/CV.pdf',
+      image:        { type: 'jpg', quality: 0.98 },
+      html2canvas:  { scale: 4 },
+      jsPDF:        { format: 'a4', orientation: 'portrait' }
+    };
+
+    function generateResume(){
+      html2pdf().set(opt).from(element).save();
+    }
+
+    resumeButton.addEventListener('click', () =>{
+      scaleCv()
+      generateResume()
+      setTimeout(removeScale, 5000)
+    })
     </script>
 
   </body>
